@@ -406,7 +406,7 @@ menu.forEach((cat,i)=>{
   const sec=document.createElement('section');sec.className='section';sec.id=cat.id;
   sec.innerHTML=`<div class="section-head">
      <span class="badge"><svg viewBox="0 0 24 24">${IC[cat.icon]}</svg></span>
-     <h2>${cat.name}</h2><span class="count">${fa(cat.items.length)} مورد</span><span class="line"></span></div>
+     <h2>${cat.name}</h2></div>
      <div class="items list"></div>`;
   const wrap=sec.querySelector('.items');
   cat.items.forEach(it=>{
