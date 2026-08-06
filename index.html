@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FFF3F6">
+<title>کاماند سوئیتس — منوی دیجیتال</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blush-1:#FFF7FA;
+  --blush-2:#FBE3EC;
+  --rose:#E48AAE;
+  --rose-deep:#D9789F;
+  --ink:#4A2530;
+  --mauve:#9B7480;
+  --gold:#C9A24B;
+  --glass-bg:rgba(255,255,255,0.55);
+  --glass-bg-strong:rgba(255,255,255,0.72);
+  --glass-brd:rgba(255,255,255,0.85);
+  --glass-shadow:0 8px 30px rgba(160,90,120,0.14);
+  --pill-active:linear-gradient(135deg,#E9A0BD,#D9789F);
+  --radius:24px;
+  --nav-h:132px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:'Vazirmatn',system-ui,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(120% 60% at 100% 0%,rgba(228,138,174,0.28),transparent 60%),
+    radial-gradient(100% 55% at 0% 20%,rgba(201,162,75,0.12),transparent 55%),
+    linear-gradient(180deg,var(--blush-1) 0%,var(--blush-2) 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  scroll-padding-top:var(--nav-h);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(255,255,255,0.5) 1px,transparent 1px);
+  background-size:22px 22px;opacity:0.35;mask-image:linear-gradient(180deg,black,transparent 40%);
+}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:40;
+  padding:calc(env(safe-area-inset-top) + 10px) 0 10px;
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--glass-brd);
+  box-shadow:0 6px 24px rgba(160,90,120,0.10);
+}
+.nav-head{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  padding:2px 20px 10px;
+}
+.nav-head img{height:46px;width:auto;display:block}
+.nav-tag{
+  font-size:11px;color:var(--mauve);letter-spacing:.5px;
+  border-inline-start:1px solid rgba(155,116,128,0.35);padding-inline-start:12px;
+}
+.pills{
+  display:flex;gap:9px;overflow-x:auto;padding:2px 16px 4px;
+  scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;
+}
+.pills::-webkit-scrollbar{display:none}
+.pill{
+  flex:0 0 auto;scroll-snap-align:center;
+  border:1px solid rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.5);
+  color:var(--ink);
+  font-family:inherit;font-size:14px;font-weight:600;
+  padding:9px 16px;border-radius:100px;cursor:pointer;
+  display:flex;align-items:center;gap:7px;
+  transition:transform .2s ease,background .25s ease,color .25s ease,box-shadow .25s ease;
+  box-shadow:0 2px 8px rgba(160,90,120,0.08);
+}
+.pill svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.6}
+.pill.active{
+  background:var(--pill-active);color:#fff;border-color:transparent;
+  box-shadow:0 6px 16px rgba(217,120,159,0.42);
+}
+.pill:active{transform:scale(.95)}
+
+/* ---------- SECTIONS ---------- */
+main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:8px 16px 60px}
+.hero{
+  text-align:center;padding:26px 12px 14px;
+}
+.hero h1{margin:0 0 6px;font-size:26px;font-weight:800;letter-spacing:-.5px}
+.hero p{margin:0;color:var(--mauve);font-size:14px;font-weight:400}
+.hero .rule{width:52px;height:3px;border-radius:3px;margin:14px auto 0;
+  background:linear-gradient(90deg,var(--gold),var(--rose))}
+
+.section{padding-top:22px;margin-bottom:8px;scroll-margin-top:var(--nav-h)}
+.section-head{display:flex;align-items:center;gap:12px;margin:0 4px 14px}
+.section-head h2{margin:0;font-size:21px;font-weight:700}
+.section-head .count{font-size:12px;color:var(--mauve);background:rgba(255,255,255,0.6);
+  padding:3px 10px;border-radius:100px;border:1px solid var(--glass-brd)}
+.section-head .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(155,116,128,0.35),transparent)}
+
+/* ---------- CARDS ---------- */
+.grid{display:flex;flex-direction:column;gap:14px}
+.card{
+  display:flex;gap:14px;align-items:stretch;
+  padding:12px;border-radius:var(--radius);cursor:pointer;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-brd);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:var(--glass-shadow);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease;
+  position:relative;overflow:hidden;
+}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(140deg,rgba(255,255,255,0.5),transparent 42%);opacity:.7}
+.card:active{transform:scale(.98)}
+@media(hover:hover){.card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(160,90,120,0.20)}}
+.thumb{
+  flex:0 0 96px;width:96px;height:96px;border-radius:18px;overflow:hidden;
+  background:linear-gradient(135deg,#F6D4E0,#EFC0D2);position:relative;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.6)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px;z-index:1}
+.card-body h3{margin:0;font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-body p{margin:0;font-size:12.5px;line-height:1.6;color:var(--mauve);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price{display:flex;align-items:baseline;gap:4px;margin-top:4px;font-weight:800;color:var(--rose-deep);font-size:15px}
+.price small{font-size:11px;font-weight:500;color:var(--mauve)}
+.tag{position:absolute;top:8px;inset-inline-start:8px;z-index:2;
+  font-size:10px;font-weight:700;color:#fff;padding:3px 8px;border-radius:100px;
+  background:linear-gradient(135deg,var(--gold),#B8863B);box-shadow:0 3px 8px rgba(0,0,0,.15)}
+
+/* ---------- MODAL ---------- */
+.overlay{
+  position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(74,37,48,0.30);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;padding:0}
+.overlay.open{opacity:1;visibility:visible}
+.sheet{
+  width:100%;max-width:520px;
+  background:var(--glass-bg-strong);
+  backdrop-filter:blur(34px) saturate(190%);-webkit-backdrop-filter:blur(34px) saturate(190%);
+  border:1px solid var(--glass-brd);border-bottom:none;
+  border-radius:30px 30px 0 0;
+  box-shadow:0 -10px 50px rgba(120,50,80,0.30);
+  padding:12px 20px calc(env(safe-area-inset-bottom) + 26px);
+  transform:translateY(100%);transition:transform .34s cubic-bezier(.2,.9,.25,1);
+  max-height:92vh;overflow-y:auto}
+.overlay.open .sheet{transform:translateY(0)}
+.grabber{width:40px;height:5px;border-radius:5px;background:rgba(155,116,128,0.4);margin:2px auto 14px}
+.sheet-img{width:100%;height:230px;border-radius:22px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#F6D4E0,#EFC0D2);box-shadow:0 10px 30px rgba(160,90,120,0.22)}
+.sheet-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sheet h3{margin:18px 2px 8px;font-size:23px;font-weight:800}
+.sheet .desc{margin:0 2px;font-size:14.5px;line-height:1.9;color:var(--ink);opacity:.85}
+.sheet-foot{display:flex;align-items:center;justify-content:space-between;margin-top:22px;
+  padding:14px 18px;border-radius:20px;background:rgba(255,255,255,0.55);
+  border:1px solid var(--glass-brd)}
+.sheet-foot .p{font-weight:800;font-size:20px;color:var(--rose-deep)}
+.sheet-foot .p small{font-size:12px;font-weight:500;color:var(--mauve)}
+.sheet-foot .lbl{font-size:13px;color:var(--mauve)}
+.close{
+  position:sticky;top:0;float:inline-start;margin-inline-start:auto;display:flex;
+  width:34px;height:34px;border-radius:50%;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.7);border:1px solid var(--glass-brd);cursor:pointer;color:var(--ink);
+  box-shadow:0 3px 10px rgba(160,90,120,0.15)}
+.close svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none}
+
+footer{text-align:center;padding:30px 20px 40px;color:var(--mauve);font-size:12px;position:relative;z-index:1}
+footer img{height:34px;opacity:.7;margin-bottom:8px}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-head">
+    <img src="logo.png" alt="کاماند سوئیتس">
+    <span class="nav-tag">منوی دیجیتال</span>
+  </div>
+  <div class="pills" id="pills"></div>
+</nav>
+
+<main>
+  <div class="hero">
+    <h1>به کاماند سوئیتس خوش آمدید</h1>
+    <p>کافه و بوتیک کیک — عطر قهوه، طعم خانگی</p>
+    <div class="rule"></div>
+  </div>
+  <div id="menu"></div>
+</main>
+
+<footer>
+  <img src="logo.png" alt="کاماند سوئیتس">
+  <div>کاماند سوئیتس · کافه و بوتیک کیک</div>
+  <div style="margin-top:6px;opacity:.8">هر روز از ۹ صبح تا ۱۰ شب</div>
+</footer>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet" id="sheet">
+    <button class="close" id="closeBtn" aria-label="بستن">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="grabber"></div>
+    <div class="sheet-img"><img id="sheetImg" src="" alt=""></div>
+    <h3 id="sheetTitle"></h3>
+    <p class="desc" id="sheetDesc"></p>
+    <div class="sheet-foot">
+      <span class="lbl">قیمت</span>
+      <span class="p"><span id="sheetPrice"></span> <small>تومان</small></span>
+    </div>
+  </div>
+</div>
+
+<script>
+const IC={
+  coffee:'<path d="M18 8h1a3 3 0 010 6h-1M3 8h15v5a5 5 0 01-5 5H8a5 5 0 01-5-5zM6 2v2M10 2v2M14 2v2"/>',
+  cold:'<path d="M5 8h14l-1.5 11a2 2 0 01-2 1.8H8.5a2 2 0 01-2-1.8zM8 8V5a4 4 0 018 0v3M9 12v5M15 12v5"/>',
+  cake:'<path d="M4 20h16M5 20v-6a3 3 0 013-3h8a3 3 0 013 3v6M12 8V4M12 4l1.5 1.5M12 4l-1.5 1.5M5 15c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 5 0"/>',
+  pastry:'<path d="M12 3c3 2 4 4 4 6a4 4 0 11-8 0c0-2 1-4 4-6zM7 14c-1.5 2-2 4-1 6M17 14c1.5 2 2 4 1 6"/>',
+  tea:'<path d="M4 8h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5zM17 9h2.5a2.5 2.5 0 010 5H17M8 3s-1 1-1 2 1 1 1 2M12 3s-1 1-1 2 1 1 1 2"/>'
+};
+const menu=[
+ {id:'coffee',name:'قهوه‌ها',icon:'coffee',items:[
+   {n:'اسپرسو',d:'شات غلیظ و پرمایه از دانه‌های تازه رست‌شده، با کرمای طلایی.',p:'۴۵٬۰۰۰',img:'1510707577719-ae7c14805e3a',tag:'محبوب'},
+   {n:'کاپوچینو',d:'اسپرسو با شیر بخارپز و فوم مخملی، متعادل و خوش‌عطر.',p:'۶۵٬۰۰۰',img:'1572442388796-11668a67e53d'},
+   {n:'لاته',d:'شیر ابریشمی روی اسپرسو ملایم، همراه با نقش لاته‌آرت.',p:'۷۰٬۰۰۰',img:'1461023058943-07fcbe16d735'},
+   {n:'موکا',d:'ترکیب قهوه و شکلات تلخ با فوم شیر و پودر کاکائو.',p:'۷۸٬۰۰۰',img:'1578314675249-a6910f80cc4e'},
+ ]},
+ {id:'cold',name:'نوشیدنی سرد',icon:'cold',items:[
+   {n:'آیس لاته',d:'اسپرسو خنک روی یخ و شیر تازه، سبک و طراوت‌بخش.',p:'۷۵٬۰۰۰',img:'1461023058943-07fcbe16d735'},
+   {n:'کلد برو',d:'دم‌آوری سرد ۱۲ ساعته، نرم و کم‌اسید با طعمی عمیق.',p:'۸۵٬۰۰۰',img:'1517701550927-30cf4ba1dba5',tag:'ویژه'},
+   {n:'فراپه کارامل',d:'قهوه یخی بلندشده با سس کارامل و خامه فرم‌گرفته.',p:'۹۵٬۰۰۰',img:'1461023058943-07fcbe16d735'},
+   {n:'موهیتو لیمو',d:'نوشیدنی خنک با لیمو، نعنا و سودا؛ بدون کافئین.',p:'۶۸٬۰۰۰',img:'1551538827-9c037cb4f32a'},
+ ]},
+ {id:'cake',name:'کیک‌ها',icon:'cake',items:[
+   {n:'کیک شکلاتی',d:'لایه‌های اسفنجی کاکائو با گاناش شکلات بلژیکی.',p:'۱۱۰٬۰۰۰',img:'1578985545062-69928b1d9587',tag:'دست‌ساز'},
+   {n:'چیزکیک توت‌فرنگی',d:'بیس بیسکویتی، فیلینگ خامه‌ای و سس توت‌فرنگی تازه.',p:'۱۲۵٬۰۰۰',img:'1533134242443-d4fd215305ad'},
+   {n:'رد ولوت',d:'کیک مخملی قرمز با فراستینگ پنیر خامه‌ای.',p:'۱۲۰٬۰۰۰',img:'1586788680434-30d324b2d46f'},
+   {n:'کیک هویج',d:'کیک نرم هویج و دارچین با فراستینگ ملایم.',p:'۱۰۵٬۰۰۰',img:'1621303837174-89787a7d4729'},
+ ]},
+ {id:'pastry',name:'شیرینی‌ها',icon:'pastry',items:[
+   {n:'کروسان کره',d:'خمیر ورقه‌ای فرانسوی، ترد بیرون و نرم درون.',p:'۵۸٬۰۰۰',img:'1555507036-ab1f4038808a',tag:'تازه'},
+   {n:'ماکارون',d:'شیرینی بادامی فرانسوی در طعم‌های رنگارنگ.',p:'۳۵٬۰۰۰',img:'1569864358642-9d1684040f43'},
+   {n:'دانمارکی سیب',d:'رول شیرین با تکه‌های سیب کاراملی و دارچین.',p:'۶۲٬۰۰۰',img:'1509440159596-0249088772ff'},
+   {n:'برانی گردویی',d:'براونی فاج شکلاتی با مغز گردو، غنی و ملس.',p:'۷۲٬۰۰۰',img:'1606313564200-e75d5e30476c'},
+ ]},
+ {id:'tea',name:'چای و دمنوش',icon:'tea',items:[
+   {n:'چای سیاه',d:'دمنوش کلاسیک با عطر خوش، همراه نبات.',p:'۴۰٬۰۰۰',img:'1544787219-7f47ccb76574'},
+   {n:'دمنوش گل‌گاوزبان',d:'دمنوش گیاهی آرامش‌بخش با عطر بهار.',p:'۵۵٬۰۰۰',img:'1597481499750-3e6b22637e12'},
+   {n:'ماچا لاته',d:'پودر چای سبز ژاپنی با شیر بخارپز، سبز و لطیف.',p:'۸۸٬۰۰۰',img:'1536256263959-770b48d82b0a',tag:'ویژه'},
+   {n:'هات چاکلت',d:'شکلات داغ غلیظ با مارشمالو و پودر کاکائو.',p:'۸۰٬۰۰۰',img:'1542990253-0b8be40e783a'},
+ ]},
+];
+
+const uns=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=500&q=80`;
+const unsBig=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+const FALLBACK="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6D4E0"/><stop offset="1" stop-color="#E48AAE"/></linearGradient></defs><rect width="200" height="200" fill="url(#g)"/><path d="M100 78a10 10 0 100 20 10 10 0 000-20zM64 128l24-28 16 18 12-14 20 24z" fill="#fff" opacity=".6"/></svg>');
+
+// build pills + sections
+const pillsEl=document.getElementById('pills'), menuEl=document.getElementById('menu');
+menu.forEach((cat,i)=>{
+  const pill=document.createElement('button');
+  pill.className='pill'+(i===0?' active':'');
+  pill.dataset.target=cat.id;
+  pill.innerHTML=`<svg viewBox="0 0 24 24">${IC[cat.icon]}</svg>${cat.name}`;
+  pill.onclick=()=>document.getElementById(cat.id).scrollIntoView({behavior:'smooth',block:'start'});
+  pillsEl.appendChild(pill);
+
+  const sec=document.createElement('section');
+  sec.className='section';sec.id=cat.id;
+  sec.innerHTML=`<div class="section-head"><h2>${cat.name}</h2>
+    <span class="count">${cat.items.length} مورد</span><span class="line"></span></div>
+    <div class="grid"></div>`;
+  const grid=sec.querySelector('.grid');
+  cat.items.forEach(it=>{
+    const card=document.createElement('article');
+    card.className='card';card.tabIndex=0;card.setAttribute('role','button');
+    card.setAttribute('aria-label',`${it.n} — نمایش جزئیات`);
+    card.innerHTML=`
+      <div class="thumb">${it.tag?`<span class="tag">${it.tag}</span>`:''}
+        <img src="${uns(it.img)}" alt="${it.n}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK}'"></div>
+      <div class="card-body">
+        <h3>${it.n}</h3><p>${it.d}</p>
+        <div class="price">${it.p} <small>تومان</small></div>
+      </div>`;
+    const open=()=>openSheet(it);
+    card.onclick=open;
+    card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
+    grid.appendChild(card);
+  });
+  menuEl.appendChild(sec);
+});
+
+// modal
+const overlay=document.getElementById('overlay'),sheet=document.getElementById('sheet');
+let lastFocus=null;
+function openSheet(it){
+  lastFocus=document.activeElement;
+  document.getElementById('sheetImg').src=unsBig(it.img);
+  document.getElementById('sheetImg').onerror=function(){this.onerror=null;this.src=FALLBACK;};
+  document.getElementById('sheetImg').alt=it.n;
+  document.getElementById('sheetTitle').textContent=it.n;
+  document.getElementById('sheetDesc').textContent=it.d;
+  document.getElementById('sheetPrice').textContent=it.p;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('closeBtn').focus();
+}
+function closeSheet(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+  if(lastFocus)lastFocus.focus();
+}
+document.getElementById('closeBtn').onclick=closeSheet;
+overlay.onclick=e=>{if(e.target===overlay)closeSheet();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))closeSheet();});
+
+// scroll-spy
+const pills=[...document.querySelectorAll('.pill')];
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      pills.forEach(p=>p.classList.toggle('active',p.dataset.target===en.target.id));
+      const ap=pills.find(p=>p.dataset.target===en.target.id);
+      if(ap)ap.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+document.querySelectorAll('.section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
