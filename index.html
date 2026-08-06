@@ -399,7 +399,7 @@ menu.forEach((cat,i)=>{
   const tile=document.createElement('button');
   tile.className='cat-tile';
   tile.innerHTML=`<span class="ic"><svg viewBox="0 0 24 24">${IC[cat.icon]}</svg></span>
-    <span class="nm">${cat.name}</span><span class="ct">${fa(cat.items.length)} مورد</span>`;
+    <span class="nm">${cat.name}</span></span>`;
   tile.onclick=()=>document.getElementById(cat.id).scrollIntoView({behavior:'smooth',block:'start'});
   catGrid.appendChild(tile);
 
