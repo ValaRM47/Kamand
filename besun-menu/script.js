@@ -1,23 +1,4 @@
-/* ===== BeSun digital menu ===== */
-
-/* ---------- Brand sun logo (SVG) ---------- */
-function sunLogo(){
-  const rays = [-72,-56,-40,-24,-8,8,24,40,56,72]
-    .map(a => `<line x1="60" y1="36" x2="60" y2="15" transform="rotate(${a} 60 58)"/>`)
-    .join("");
-  return `
-  <svg viewBox="0 0 120 78" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BeSun">
-    <defs>
-      <linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#F0B368"/>
-        <stop offset="1" stop-color="#D98C3E"/>
-      </linearGradient>
-    </defs>
-    <g stroke="url(#sunG)" stroke-width="3.4" stroke-linecap="round">${rays}</g>
-    <path d="M42 58a18 18 0 0 1 36 0z" fill="url(#sunG)"/>
-    <line x1="26" y1="58" x2="94" y2="58" stroke="url(#sunG)" stroke-width="3.4" stroke-linecap="round"/>
-  </svg>`;
-}
+/* ===== Kamand Sweets digital menu ===== */
 
 /* ---------- Category icons (SVG, white line) ---------- */
 const ICONS = {
@@ -240,6 +221,8 @@ function el(html){
   return t.content.firstElementChild;
 }
 
+const PRODUCT_IMG = "sample-image.png";
+
 function renderCard(it){
   const desc    = it.d ? `<p class="card-desc">${it.d}</p>` : "";
   const extras  = it.extras
@@ -247,10 +230,9 @@ function renderCard(it){
     : "";
   return `
     <article class="card">
-      <div class="card-head">
-        <h3 class="card-name">${it.n}</h3>
-        <span class="card-price">${it.p}</span>
-      </div>
+      <div class="card-img"><img src="${PRODUCT_IMG}" alt="${it.n}" loading="lazy" /></div>
+      <h3 class="card-name">${it.n}</h3>
+      <div class="card-price">${it.p}</div>
       ${desc}
       ${extras}
     </article>`;
@@ -284,12 +266,6 @@ function renderNav(){
 
 /* ---------- Init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // logos
-  const logo = sunLogo();
-  document.getElementById("brand-logo-slot").innerHTML  = logo;
-  document.getElementById("hero-logo-slot").innerHTML   = logo;
-  document.getElementById("footer-logo-slot").innerHTML = logo;
-
   // menu + nav
   document.getElementById("menu").innerHTML = SECTIONS.map(renderSection).join("");
   const track = document.getElementById("cat-nav-track");
