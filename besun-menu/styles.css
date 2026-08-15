@@ -22,7 +22,7 @@ html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
-  background:var(--cream);
+  background:var(--nav-grad-a);
   color:var(--ink);
   font-family:"Vazirmatn", -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight:400;
@@ -89,8 +89,8 @@ a{ color:inherit; text-decoration:none; }
 }
 .hero-bg{
   position:absolute; inset:0;
-  background:
-    radial-gradient(120% 120% at 50% -10%, #FDE7F2 0%, #FACDE5 45%, #F7B9D7 100%);
+  background:var(--card)
+   /* radial-gradient(120% 120% at 50% -10%, #FDE7F2 0%, #FACDE5 45%, #F7B9D7 100%);*/
 }
 .hero-bg::before{
   content:""; position:absolute; inset:0;
@@ -111,7 +111,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .hero-fade{
   position:absolute; inset-inline:0; bottom:0; height:70px; z-index:1;
-  background:linear-gradient(to bottom, rgba(250,205,229,0), var(--cream));
+  background:var(--card)/*linear-gradient(to bottom, rgba(250,205,229,0), var(--cream));*/
 }
 
 /* ---------- Sticky category nav ---------- */
@@ -131,7 +131,7 @@ a{ color:inherit; text-decoration:none; }
   overflow-x:auto;
   scroll-behavior:smooth;
   scrollbar-width:thin;
-  scrollbar-color:var(--brown-soft) transparent;
+  scrollbar-color:var(#fff) transparent;
 }
 .cat-nav-track::-webkit-scrollbar{ height:6px; }
 .cat-nav-track::-webkit-scrollbar-thumb{ background:var(--brown-soft); border-radius:6px; }
@@ -142,7 +142,7 @@ a{ color:inherit; text-decoration:none; }
   width:92px;
   min-height:78px;
   background:var(--cream-2);
-  color:var(--brown-dark);
+  color:var(#fff);
   border:none;
   border-radius:12px 12px 6px 6px;
   padding:12px 6px 10px;
@@ -154,7 +154,7 @@ a{ color:inherit; text-decoration:none; }
   box-shadow:var(--shadow-sm);
   transition:transform .2s, background .2s, color .2s, box-shadow .2s;
 }
-.cat-item svg{ width:30px; height:30px; stroke:var(--brown-dark); transition:stroke .2s; }
+.cat-item svg{ width:30px; height:30px; stroke:#fff; transition:stroke .2s; }
 .cat-item:hover{ transform:translateY(-3px); background:#F3A6CC; }
 .cat-item.active{
   background:var(--brown);
@@ -163,7 +163,7 @@ a{ color:inherit; text-decoration:none; }
   box-shadow:0 8px 18px rgba(142,42,88,.30);
 }
 .cat-item.active svg{ stroke:#fff; }
-.cat-item .cat-label{ display:block; }
+.cat-item .cat-label{ display:block; color: #fff; }
 
 /* ---------- Menu sections ---------- */
 .menu{
