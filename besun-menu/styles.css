@@ -2,13 +2,13 @@
 :root{
   --cream:      #FACDE5;   /* page background (given pink)   */
   --cream-2:    #F7B9D7;   /* surfaces: nav cards, pills     */
-  --brown:      #B83E75;   /* rose accent: names, buttons    */
-  --brown-dark: #8E2A58;   /* deep rose: headings, nav text  */
+  --brown:      #000000;   /* rose accent: names, buttons B83E75   */
+  --brown-dark: #000000;   /* deep rose: headings, nav text  */
   --brown-soft: #C25F98;   /* muted rose: price, dividers    */
   --gray:       #B08AA1;   /* mauve: descriptions            */
-  --ink:        #4A2A3A;   /* deep plum: base text           */
+  --ink:        #010101;   /* deep plum: base text   4A2A3A        */
   --card:       #FFFFFF;   /* card background                */
-  --nav-grad-a: #FDE4F1;
+  --nav-grad-a: #fcefef; /*fde4*/
   --nav-grad-b: #FFF0F8;
   --shadow:     4px 4px 14px rgba(180, 70, 120, .16);
   --shadow-sm:  0 3px 10px rgba(180, 70, 120, .14);
